@@ -19,7 +19,7 @@ They can view regions on a **map**, inspect job details, and **accept or decline
 
 ## Features
 
-### 🗺 Map-Based Work Inbox
+### Map-Based Work Inbox
 - Interactive Leaflet map
 - Region highlighting
 - Clickable locations with popups
@@ -33,7 +33,7 @@ They can view regions on a **map**, inspect job details, and **accept or decline
 - Success & decline snackbar notifications
 - Sticky action bar
 
-### 📋 Worklist
+### Worklist
 - Accepted jobs appear in worker's worklist
 
 ---
