@@ -1,0 +1,92 @@
+<div class="h-screen w-full bg-white flex flex-col">
+  <!-- MAP HEADER -->
+  <div class="relative h-[33vh] w-full overflow-hidden bg-gray-200">
+    <app-work-map [activePage]="'job-post'" class="absolute inset-0"></app-work-map>
+
+    <button
+      type="button"
+      class="absolute left-4 top-10 z-10 h-12 w-12 rounded-full bg-white shadow flex items-center justify-center"
+      (click)="goBack()"
+      aria-label="Back"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+
+  <div class="flex-1 overflow-y-auto pb-28">
+    <div class="-mt-6 rounded-t-3xl bg-white shadow-[0_-10px_30px_rgba(0,0,0,0.08)]">
+      <div class="px-5 pt-6 pb-3 mt-6">
+        <h1 class="text-3xl font-semibold text-gray-900">{{ job?.title }}</h1>
+
+        <div class="mt-2 flex items-center gap-3">
+          <span class="text-xs font-semibold px-3 py-1 rounded-full" [ngClass]="job?.status === 'Accepted' ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-700'" > {{ job?.status }} </span>
+            {{ job?.status }}
+
+          <span *ngIf="job?.assignedTo" class="text-sm text-gray-500">
+            {{ job?.assignedTo }} - {{ job?.acceptedDate | date:'dd/MM/yyyy' }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Dynamic Accordion -->
+      <mat-accordion class="block px-1 pb-6">
+        <mat-expansion-panel
+          *ngFor="let section of sections; trackBy: trackByKey"
+          [expanded]="section.expanded"
+          class="!shadow-none"
+          (opened)="onSectionOpened(section)"
+        >
+          <mat-expansion-panel-header class="px-4">
+            <mat-panel-title class="font-semibold text-gray-900">
+              {{ section.title }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <!-- Key/Value layout -->
+          <ng-container *ngIf="section.type === 'keyValue'">
+            <div class="px-4 pb-4">
+              <div class="grid grid-cols-2 gap-y-4 text-sm">
+                <ng-container *ngFor="let item of section.data | keyvalue">
+                  <div class="text-gray-500">
+                  </div>
+                  <div class="text-right text-gray-900">
+                    {{ item.value ?? '-' }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="section.type === 'custom'">
+            <div class="px-4 pb-4 text-sm text-gray-500">
+              {{ section.loading ? 'Loading…' : (section.emptyText ?? 'No data available') }}
+            </div>
+          </ng-container>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+
+  <!-- ACTION BAR -->
+  <div class="sticky bottom-0 z-20 border-t border-gray-100 bg-white/95 backdrop-blur">
+    <div class="px-5 py-4 flex items-center gap-3">
+      <button
+        type="button"
+        class="flex-1 rounded-2xl border border-gray-300 bg-white py-3 font-semibold text-gray-900
+               hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+        (click)="declineJob()"
+      >
+        Decline
+      </button>
+
+      <button
+        type="button"
+        class="flex-1 rounded-2xl bg-violet-600 py-3 font-semibold text-white
+               hover:bg-violet-700 disabled:opacity-50 disabled:cursor-not-allowed"
+        (click)="acceptJob()"
+      >
+      Accept
+      </button>
+    </div>
+  </div>
+</div>

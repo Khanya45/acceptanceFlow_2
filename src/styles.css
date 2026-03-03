@@ -1,3 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+
+
+.job-sheet-panel .mat-bottom-sheet-container {
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  padding: 0;
+  max-width: 768px; 
+  margin: 0 auto;   
+}
+
+.job-post-bottom-sheet {
+  height: 90vh;
+  max-height: 90vh;
+}
+
+.job-post-bottom-sheet .mat-bottom-sheet-container {
+  height: 100%;
+  max-height: 100%;
+  padding: 0;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden; 
+}
+
+.mat-expansion-panel {
+  border-radius: 0 !important;
+}
+.mat-expansion-panel-header {
+  min-height: 56px !important;
+}
+.mat-expansion-panel:not(:last-child) {
+  border-bottom: 1px solid #f0f0f0;
+}
+.mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
+/* SUCCESS */
+.snackbar-success {
+  --mdc-snackbar-container-color: #ecfdf5;
+  --mdc-snackbar-supporting-text-color: #047857;
+}
+
+/* DECLINE */
+.snackbar-decline {
+  --mdc-snackbar-container-color: #fef2f2; 
+  --mdc-snackbar-supporting-text-color: #b91c1c;
+}

@@ -1,8 +1,70 @@
-# AcceptanceFlow2
+# Worker Acceptance Flow Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
+This is an Angular + Tailwind CSS application built to support a **field worker job acceptance flow**.
 
-## Development server
+Workers are assigned job posts in specific **regions and villages**.  
+They can view regions on a **map**, inspect job details, and **accept or decline** work assignments.
+
+---
+
+## Tech Stack
+
+- **Angular** (Standalone Components, Feature-Based Architecture)
+- **Tailwind CSS** (UI Styling)
+- **Leaflet** (Map Rendering)
+- **Angular Material** (Accordion, Snackbar, Icons)
+- TypeScript
+
+---
+
+## Features
+
+### 🗺 Map-Based Work Inbox
+- Interactive Leaflet map
+- Region highlighting
+- Clickable locations with popups
+- Available job posts per region
+
+### Job Post Page
+- Map header preview
+- Dynamic accordion sections
+- Job metrics display
+- Accept / Decline actions
+- Success & decline snackbar notifications
+- Sticky action bar
+
+### 📋 Worklist
+- Accepted jobs appear in worker's worklist
+
+---
+
+## 🛠 Requirements
+
+- Node.js (LTS recommended)
+- npm (comes with Node)
+- Angular CLI
+
+Install Angular CLI globally (if not installed):
+
+```bash
+npm install -g @angular/cli
+```
+
+## How To Run The Application
+
+
+1. Clone the Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/acceptanceFlow_2.git
+cd acceptanceFlow_2
+```
+
+2.  Install Dependencies
+
+```bash
+npm install
+```
 
 To start a local development server, run:
 
@@ -12,29 +74,31 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+## Application Structure
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+The application follows a feature-based architecture:
 
 ```bash
-ng generate --help
+src/app/
+│
+├── features/
+│   ├── home/
+│   │
+│   └── work-package/
+│       │
+│       └── job-sheet/
+│       │
+│       └── job-post-sheet/
+│
+├── components/
+│   ├── work-map/
+│   │
+│
+├── state/
+│   ├── 
+└── app.routes.ts
 ```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
 ## Running unit tests
 
